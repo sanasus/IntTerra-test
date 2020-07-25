@@ -1,32 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div class="in-app">
+    <InHeader />
     <router-view />
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import InHeader from "@/components/InHeader.vue";
+
+@Component({
+  name: "InApp",
+  components: {
+    InHeader
+  }
+})
+export default class InApp extends Vue {}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+:root {
+  --black: #091c28;
+  --white: #ffffff;
+  --gray: #f9f9f9;
+  --gray-2: #a7a9ac;
+  --gray-3: #edeeee;
+  --main-text: #333333;
+  --blue: #3399ff;
+  --yellow: #ffe06d;
+  --green: #66cc66;
+  --red: #ff7360;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.in-app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  background-color: var(--gray);
+  font-family: "Ubuntu", sans-serif;
+  color: var(--main-text);
 }
 </style>
